@@ -1,0 +1,25 @@
+﻿@model Project_Personel_Demo.Models.TblTestimonial
+@{
+    ViewBag.Title = "AddTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Referans Ekleme Sayfası</h2>
+
+<form method="post">
+    <label>Referans Adı</label>
+    @Html.TextBoxFor(x => x.TestimonialName, new { @class = "form-control" })
+    <br />
+    <label>Referans Resmi</label>
+    @Html.TextBoxFor(x => x.TestimonialImage, new { @class = "form-control" })
+    <br />
+    <label>Referans Başlığı</label>
+    @Html.TextBoxFor(x => x.TestimonialID, new { @class = "form-control" })
+    <br />
+    <label>Referans Açıklaması</label>
+    @Html.TextBoxFor(x => x.TestimonialDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+    <a class="btn btn-primary" style="background-color: blueviolet; border-color: blueviolet" href="/Testimonial/Index/">Geri</a>
+</form>
+

@@ -1,0 +1,21 @@
+﻿@model Project_Personel_Demo.Models.TblFeature
+@{
+    ViewBag.Title = "AddFeature";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Özellik Ekleme Sayfası</h2>
+
+<form method="post">
+    <label>Özellik Başlığı</label>
+    @Html.TextBoxFor(x => x.FeatureTitle, new { @class = "form-control" })
+    <br />
+    <label>Özellik Logosu</label>
+    @Html.TextBoxFor(x => x.FeatureLogo, new { @class = "form-control" })
+    <br />
+    <label>Özellik Açıklaması</label>
+    @Html.TextBoxFor(x => x.FeatureDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+    <a class="btn btn-primary" style="background-color: blueviolet;border-color: blueviolet" href="/Feature/Index/">Geri</a>
+</form>

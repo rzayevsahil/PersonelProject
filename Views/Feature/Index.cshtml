@@ -1,0 +1,31 @@
+﻿@model List<Project_Personel_Demo.Models.TblFeature>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Özellik Listesi</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Logo</th>
+        <th>Açıklama</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.FeatureID</td>
+            <td>@x.FeatureTitle</td>
+            @*<td>@x.FeatureLogo</td>*@
+        <td><img src="@x.FeatureLogo" width="50" height="auto"/></td>
+            <td>@x.FeatureDescription</td>
+            <td><a href="/Feature/DeleteFeature/@x.FeatureID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Feature/EditFeature/@x.FeatureID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Feature/AddFeature/" class="btn btn-primary">Yeni Özellik Ekle</a>
