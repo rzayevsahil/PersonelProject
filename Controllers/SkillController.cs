@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -44,6 +45,18 @@ namespace Project_Personel_Demo.Controllers
         {
             var value = dbPersonelEntities.TblSkill.Where(x => x.SkillID == id).FirstOrDefault();
             return View(value);
+        }
+
+        [HttpPost]
+        public ActionResult EditSkill(TblSkill s)
+        {
+            var skill = dbPersonelEntities.TblSkill.Find(s.SkillID);
+            skill.SkillID = s.SkillID;
+            skill.SkillTitle = s.SkillTitle;
+            skill.SkillValue = s.SkillValue;
+            dbPersonelEntities.TblSkill.AddOrUpdate(skill);
+            dbPersonelEntities.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
