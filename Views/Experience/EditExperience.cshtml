@@ -6,21 +6,62 @@
 
 <h2>Deneyim Düzenleme Sayfası</h2>
 <form method="post">
-    <label>Tecrübe ID</label>
+    <label>Deneyim ID</label>
     @Html.TextBoxFor(x => x.ExperienceID, new { @class = "form-control", @readonly = "" })
     <br />
 
-    <label>Tecrübe Başlığı</label>
+    <label>Deneyim Başlığı</label>
     @Html.TextBoxFor(x => x.ExperinceTitle, new { @class = "form-control" })
     <br />
 
-    <label>Tecrübe Tarihi</label>
-    @Html.TextBoxFor(x => x.ExperienceDate, new { @class = "form-control" })
+    <label>Deneyim Tarihi</label>
+    <p></p>
+    <span style="margin-top: 5px">Başlanğıç Tarihi</span>
+    <input type="month" class="form-control" id="date1" value="@ViewBag.startDate" required="" />
+
+    <span>Bitiş Tarihi</span>
+    <input type="month" class="form-control" id="date2" value="@ViewBag.endDate" />
+
+    <input type="text" value="" id="date" name="ExperienceDate" readonly="" style="visibility: hidden" />
     <br />
 
-    <label>Tecrübe Açıklaması</label>
+    <label>Deneyim Açıklaması</label>
     @Html.TextBoxFor(x => x.ExperienceDescription, new { @class = "form-control" })
     <br />
-    <button class="btn btn-primary">Deneyim Güncelle</button>
+    <button class="btn btn-primary" onclick="myFunction()">Deneyim Güncelle</button>
     <a class="btn btn-primary" style="background-color: blueviolet;border-color: blueviolet" href="/Experience/Index/">Geri</a>
 </form>
+
+<script>
+    var months = new Array();
+    months[0] = "Ocak";
+    months[1] = "Şubat";
+    months[2] = "Mart";
+    months[3] = "Nisan";
+    months[4] = "Mayıs";
+    months[5] = "Haziran";
+    months[6] = "Temmuz";
+    months[7] = "Ağustos";
+    months[8] = "Eylül";
+    months[9] = "Ekim";
+    months[10] = "Kasım";
+    months[11] = "Aralık";
+    function myFunction() {
+        var date1 = document.getElementById("date1").value;
+        var date2 = document.getElementById("date2").value;
+        var d1 = new Date(date1.toString());
+        var d2 = new Date(date2.toString());
+        var month1 = parseInt(d1.getMonth());
+        var month2 = parseInt(d2.getMonth());
+        var date = (months[month1] + " " + d1.getUTCFullYear() + " - " + months[month2] + " " + d2.getUTCFullYear());
+        if (date1) {
+            if (date2) {
+                document.getElementById("date").value = date.toString();
+            } else {
+                document.getElementById("date").value = (months[month1] + " " + d1.getUTCFullYear() + " -  Aktif");
+            }
+        } else {
+            document.getElementById("date").value = document.getElementById("getDate").value;
+        }
+    }
+</script>

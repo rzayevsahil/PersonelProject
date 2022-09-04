@@ -44,6 +44,9 @@ namespace Project_Personel_Demo.Controllers
         [HttpGet]
         public ActionResult EditEducation(int id)
         {
+            var education = dbPersonelEntities.TblEducation.Find(id);
+            ViewBag.date = education.EduationDate;
+
             List<string> months = new List<string>();
             months.Add("Ocak");
             months.Add("Şubat");
@@ -57,9 +60,6 @@ namespace Project_Personel_Demo.Controllers
             months.Add("Ekim");
             months.Add("Kasım");
             months.Add("Aralık");
-
-            var education = dbPersonelEntities.TblEducation.Find(id);
-            ViewBag.date = education.EduationDate;
 
             //tarihleri alıp arada tire var diye bölüyorum(start,end)
             var startDate = education.EduationDate.Split('-')[0];
