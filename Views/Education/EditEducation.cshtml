@@ -15,14 +15,12 @@
     <br />
 
     <label>Eğitim Tarihi</label>
-    @*@Html.TextBoxFor(x => x.EduationDate, new { @class = "form-control",@readonly="true" })*@
-    <input type="text" value="@ViewBag.date" class="form-control" id="getDate" readonly="" />
     <p></p>
-    <span>Başlanğıç Tarihi</span>
-    <input type="month" class="form-control" id="date1" required=""/>
+    <span style="margin-top: 5px">Başlanğıç Tarihi</span>
+    <input type="month" class="form-control" id="date1" value="@ViewBag.startDate" required=""/>
 
     <span>Bitiş Tarihi</span>
-    <input type="month" class="form-control" id="date2" />
+    <input type="month" class="form-control" id="date2" value="@ViewBag.endDate"/>
 
     <input type="text" value="" id="date" name="EduationDate" readonly="" style="visibility: hidden" />
 
@@ -35,7 +33,6 @@
     <a class="btn btn-primary" style="background-color: blueviolet;border-color: blueviolet" href="/Education/Index/">Geri</a>
 </form>
 
-@*<button onclick="myFunction()">Try it</button>*@
 <script>
     var months = new Array();
     months[0] = "Ocak";
@@ -55,8 +52,8 @@
         var date2 = document.getElementById("date2").value;
         var d1 = new Date(date1.toString());
         var d2 = new Date(date2.toString());
-        var month1 = parseInt(d1.getMonth())
-        var month2 = parseInt(d2.getMonth())
+        var month1 = parseInt(d1.getMonth());
+        var month2 = parseInt(d2.getMonth());
         var date = (months[month1] + " " + d1.getUTCFullYear() + " - " + months[month2] + " " + d2.getUTCFullYear());
         if (date1) {
             if (date2) {
