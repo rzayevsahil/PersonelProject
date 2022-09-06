@@ -112,7 +112,6 @@ namespace Project_Personel_Demo.Controllers
             education.EducationTitle = e.EducationTitle;
             education.EduationDate = e.EduationDate;
             education.EducationDescription = e.EducationDescription;
-            dbPersonelEntities.TblEducation.AddOrUpdate(education);
             dbPersonelEntities.SaveChanges();
             return RedirectToAction("Index");
         }

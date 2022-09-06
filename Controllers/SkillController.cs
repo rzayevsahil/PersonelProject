@@ -54,7 +54,6 @@ namespace Project_Personel_Demo.Controllers
             skill.SkillID = s.SkillID;
             skill.SkillTitle = s.SkillTitle;
             skill.SkillValue = s.SkillValue;
-            dbPersonelEntities.TblSkill.AddOrUpdate(skill);
             dbPersonelEntities.SaveChanges();
             return RedirectToAction("Index");
         }

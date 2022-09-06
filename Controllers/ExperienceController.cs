@@ -110,7 +110,6 @@ namespace Project_Personel_Demo.Controllers
             value.ExperinceTitle = experience.ExperinceTitle;
             value.ExperienceDescription = experience.ExperienceDescription;
             value.ExperienceDate = experience.ExperienceDate;
-            dbPersonelEntities.TblExperience.AddOrUpdate(value);
             dbPersonelEntities.SaveChanges();
             return RedirectToAction("Index");
         }

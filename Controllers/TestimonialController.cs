@@ -56,7 +56,6 @@ namespace Project_Personel_Demo.Controllers
             testimonial.TestimonialImage = t.TestimonialImage;
             testimonial.TestimonialTitle = t.TestimonialTitle;
             testimonial.TestimonialDescription = t.TestimonialDescription;
-            dbPersonelEntities.TblTestimonial.AddOrUpdate(testimonial);
             dbPersonelEntities.SaveChanges();
             return RedirectToAction("Index");
         }

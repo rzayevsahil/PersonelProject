@@ -52,7 +52,6 @@ namespace Project_Personel_Demo.Controllers
             feature.FeatureTitle = f.FeatureTitle;
             feature.FeatureLogo = f.FeatureLogo;
             feature.FeatureDescription = f.FeatureDescription;
-            dbPersonelEntities.TblFeature.AddOrUpdate(feature);
             dbPersonelEntities.SaveChanges();
             return RedirectToAction("Index");
         }
