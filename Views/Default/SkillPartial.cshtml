@@ -1,0 +1,27 @@
+﻿@using Project_Personel_Demo.Models
+@model List<TblSkill>
+<section class="w3l-about ">
+    <div class="skills-bars py-5">
+        <div class="container py-md-3">
+            <div class="heading text-center mx-auto">
+                <h3 class="head">Web siteme hoş geldiniz</h3>
+                <p class="my-3 head">
+                    Herkese merhaba, yapmış olduğum projeler, çalıştığım firmalar ve kullandığım teknolojileri listeyen sayfama ait bilgilere buradan ulaşabilirsiniz.
+                </p>
+
+            </div>
+            <div class="row mt-5 pt-3">
+                @foreach (var x in Model)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-6 skills-bar-grids mb-4 pb-2">
+                        <h4>@x.SkillTitle</h4>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-color" role="progressbar" style="width: @x.SkillValue%; height: 4px;" aria-valuenow="@x.SkillValue" aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

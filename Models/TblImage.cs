@@ -17,5 +17,6 @@ namespace Project_Personel_Demo.Models
         public int ImageID { get; set; }
         public string ImageUrl { get; set; }
         public string ImageDescription { get; set; }
+        public string Category { get; set; }
     }
 }

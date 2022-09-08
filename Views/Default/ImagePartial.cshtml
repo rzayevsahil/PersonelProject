@@ -1,0 +1,48 @@
+﻿@model List<Project_Personel_Demo.Models.TblImage>
+<div class="products-4" id="portfolio">
+    <!-- Products4 block -->
+    <div id="products4-block" class="text-center">
+        <div class="container">
+            <div class="heading text-center mx-auto mb-5">
+                <h3 class="head">Projelerimden Görseller</h3>
+                <p class="my-3 head">
+                    @ViewBag.v
+                </p>
+            </div>
+
+            @{ int rowNumber = 1;}
+            @{ Dictionary<int, string> tempRowNumberAndCategories = new Dictionary<int, string>();}
+            @{ string contentstring = "content";}
+            @{ string tabstring = "tab";}
+            @foreach (var x in ViewBag.categories)
+            {
+                tempRowNumberAndCategories.Add(rowNumber, x);
+                <input id="@tabstring@rowNumber" type="radio" name="tabs">
+                <label class="tabtle" for="@tabstring@rowNumber">@x</label>
+                rowNumber++;
+            }
+            @for (int i = 1; i <= tempRowNumberAndCategories.Count; i++)
+            {
+                <section id="@contentstring@i" class="tab-content text-left">
+                    <div class="d-grid grid-col-3">
+                        @foreach (var y in Model.Where(t => t.Category == tempRowNumberAndCategories[i]))
+                        {
+                            <div class="product">
+                                <a href="@y.ImageUrl" data-lightbox="example-set"
+                                   data-title="@y.ImageDescription">
+                                    <figure>
+                                        <img src="@y.ImageUrl" class="img-responsive" width="80px" height="auto" alt="" />
+                                    </figure>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </section>
+            }
+
+        </div>
+    </div>
+    <!-- Products4 block -->
+</div>
+<script src="~/Templates/my_website-starter/assets/js/jquery-3.3.1.min.js"></script>
+<script src="~/Templates/my_website-starter/assets/js/lightbox-plus-jquery.min.js"></script>
