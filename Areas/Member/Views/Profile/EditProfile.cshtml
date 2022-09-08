@@ -1,0 +1,26 @@
+﻿@using Project_Personel_Demo.Models
+@model TblMember
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h2>Bilgi Güncelleme Sayfası</h2>
+
+<form method="post">
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.MemberID, new { @class = "form-control" })
+    <br />
+    <label>Ad</label>
+    @Html.TextBoxFor(x => x.MemberName, new { @class = "form-control" })
+    <br />
+    <label>Soyad</label>
+    @Html.TextBoxFor(x => x.MemberSurname, new { @class = "form-control" })
+    <br />
+    <label>Mail</label>
+    @Html.TextBoxFor(x => x.MemberMail, new { @class = "form-control" })
+    <br />
+    <label>Şifre</label>
+    @Html.TextBoxFor(x => x.MemberPassword, new { @class = "form-control" })
+    <button class="btn btn-primary">Güncelle</button>
+</form>
