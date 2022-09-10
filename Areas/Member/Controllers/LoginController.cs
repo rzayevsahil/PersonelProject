@@ -33,8 +33,30 @@ namespace Project_Personel_Demo.Areas.Member.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Login");
+                var selectUser = dbPersonelEntities.TblMember.FirstOrDefault(x=>x.MemberMail==member.MemberMail);
+                if (selectUser?.AccessFailedCount < 3)
+                {
+                    selectUser.AccessFailedCount += 1;
+                    dbPersonelEntities.SaveChanges();
+                    return RedirectToAction("Index", "Login");
+                }
+                else
+                {
+                    selectUser.LockoutEnabled = false;
+                    DateTime date = DateTime.Now;
+                    TimeSpan banTime = new TimeSpan(3, 0, 0, 0);
+                    var banTimeEnd =date.Add(banTime);
+                    selectUser.LockoutEnd = banTimeEnd;
+                    dbPersonelEntities.SaveChanges();
+                    return RedirectToAction("BanPage", "BanPage");
+                }
+                
             }
+        }
+
+        public ActionResult LogOut()
+        {
+            return RedirectToAction("Index");
         }
     }
 }

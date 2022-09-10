@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Member\Controllers\BanPageController.cs" />
     <Compile Include="Areas\Member\Controllers\LoginController.cs" />
     <Compile Include="Areas\Member\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Member\Controllers\TestimonialController.cs" />
@@ -224,6 +225,7 @@
     <Content Include="Areas\Member\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Member\Views\Profile\EditProfile.cshtml" />
     <Content Include="Areas\Member\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Member\Views\BanPage\BanPage.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -235,6 +237,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Templates\ghost-page-404\dist\index.html" />
+    <Content Include="Templates\ghost-page-404\dist\script.js" />
+    <Content Include="Templates\ghost-page-404\dist\style.css" />
+    <Content Include="Templates\ghost-page-404\LICENSE.txt" />
+    <Content Include="Templates\ghost-page-404\src\index.html" />
+    <Content Include="Templates\ghost-page-404\src\script.js" />
     <Content Include="Templates\my_website-starter\about.html" />
     <Content Include="Templates\my_website-starter\assets\css\style-starter.css" />
     <Content Include="Templates\my_website-starter\assets\fonts\fontawesome-webfont.svg" />
@@ -327,6 +335,8 @@
     <Content Include="Templates\simple-404-template-master\LICENSE" />
     <Content Include="Templates\simple-404-template-master\README.md" />
     <Content Include="Views\Error\Page404.cshtml" />
+    <Content Include="Templates\ghost-page-404\README.md" />
+    <Content Include="Templates\ghost-page-404\src\style.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

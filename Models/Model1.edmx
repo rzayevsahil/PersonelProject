@@ -60,6 +60,9 @@
           <Property Name="MemberSurname" Type="nvarchar" MaxLength="50" />
           <Property Name="MemberPassword" Type="nvarchar" MaxLength="50" />
           <Property Name="MemberMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="LockoutEnd" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TblMemberRole">
           <Key>
@@ -236,6 +239,9 @@
           <Property Name="MemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MemberMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblMemberRole" Relationship="DbPersonelModel.FK_TblMemberRole_TblMember" FromRole="TblMember" ToRole="TblMemberRole" />
+          <Property Name="LockoutEnd" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TblMemberRole">
           <Key>
@@ -359,6 +365,9 @@
           <EntitySetMapping Name="TblMember">
             <EntityTypeMapping TypeName="DbPersonelModel.TblMember">
               <MappingFragment StoreEntitySet="TblMember">
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEnd" ColumnName="LockoutEnd" />
                 <ScalarProperty Name="MemberMail" ColumnName="MemberMail" />
                 <ScalarProperty Name="MemberPassword" ColumnName="MemberPassword" />
                 <ScalarProperty Name="MemberSurname" ColumnName="MemberSurname" />

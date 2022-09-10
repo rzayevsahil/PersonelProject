@@ -25,6 +25,9 @@ namespace Project_Personel_Demo.Models
         public string MemberSurname { get; set; }
         public string MemberPassword { get; set; }
         public string MemberMail { get; set; }
+        public Nullable<System.DateTime> LockoutEnd { get; set; }
+        public bool LockoutEnabled { get; set; }
+        public int AccessFailedCount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblMemberRole> TblMemberRole { get; set; }
