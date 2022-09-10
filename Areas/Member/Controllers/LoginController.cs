@@ -25,7 +25,7 @@ namespace Project_Personel_Demo.Areas.Member.Controllers
         {
             var members = dbPersonelEntities.TblMember.FirstOrDefault(x =>
                 x.MemberMail == member.MemberMail && x.MemberPassword == member.MemberPassword);
-            if (members != null)
+            if (members != null && members.LockoutEnabled)
             {
                 FormsAuthentication.SetAuthCookie(members.MemberMail,false);
                 Session["MemberMail"] = members.MemberMail;
@@ -48,7 +48,7 @@ namespace Project_Personel_Demo.Areas.Member.Controllers
                     var banTimeEnd =date.Add(banTime);
                     selectUser.LockoutEnd = banTimeEnd;
                     dbPersonelEntities.SaveChanges();
-                    return RedirectToAction("BanPage", "BanPage");
+                    return RedirectToAction("BanPage/"+selectUser.MemberID, "BanPage");
                 }
                 
             }
