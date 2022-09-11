@@ -14,8 +14,10 @@ namespace Project_Personel_Demo.Areas.Member.Controllers
         public ActionResult BanPage(int id)
         {
             var member = dbPersonelEntities.TblMember.Find(id);
-            var banTimeHour = Convert.ToDateTime(member.LockoutEnd).Hour - DateTime.Now.Hour;
-            var banTimeDay = Convert.ToDateTime(member.LockoutEnd).Day - DateTime.Now.Day;
+            var banTimeHour = (Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now)).Hours;
+            var banTimeDay = (Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now)).Days;
+            var banTimeMinute = (Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now)).Minutes;
+            ViewBag.banTimeMinute = banTimeMinute;
             ViewBag.banTimeHour = banTimeHour;
             ViewBag.banTimeDay = banTimeDay;
             return View();
