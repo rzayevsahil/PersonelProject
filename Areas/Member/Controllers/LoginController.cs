@@ -34,11 +34,12 @@ namespace Project_Personel_Demo.Areas.Member.Controllers
             }
             else if (members != null && !members.LockoutEnabled)
             {
-                var banTimeMinute = (Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now)).Minutes;
-                var banTimeHour = (Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now)).Hours;
-                var banTimeDay = (Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now)).Days;
+                var banTimeMinute = Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now).Minutes;
+                var banTimeHour = Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now).Hours;
+                var banTimeDay = Convert.ToDateTime(member.LockoutEnd).Subtract(DateTime.Now).Days;
 
-                if (banTimeMinute <= 0 && banTimeHour <= 0 && banTimeDay <= 0)
+                
+                if(banTimeDay.Equals(0) && banTimeHour.Equals(0))
                 {
                     members.LockoutEnabled = true;
                     members.LockoutEnd = null;
@@ -52,6 +53,7 @@ namespace Project_Personel_Demo.Areas.Member.Controllers
                 {
                     return RedirectToAction("BanPage/" + members.MemberID, "BanPage");
                 }
+
             }
             else
             {
@@ -59,17 +61,19 @@ namespace Project_Personel_Demo.Areas.Member.Controllers
                 if (selectUser?.AccessFailedCount < 3)
                 {
                     selectUser.AccessFailedCount += 1;
+                    if (selectUser?.AccessFailedCount==3)
+                    {
+                        selectUser.LockoutEnabled = false;
+                        DateTime date = DateTime.Now;
+                        TimeSpan banTime = new TimeSpan(3, 0, 0, 0);
+                        var banTimeEnd = date.Add(banTime);
+                        selectUser.LockoutEnd = banTimeEnd;
+                    }
                     dbPersonelEntities.SaveChanges();
                     return RedirectToAction("Index", "Login");
                 }
                 else
                 {
-                    selectUser.LockoutEnabled = false;
-                    DateTime date = DateTime.Now;
-                    TimeSpan banTime = new TimeSpan(3, 0, 0, 0);
-                    var banTimeEnd = date.Add(banTime);
-                    selectUser.LockoutEnd = banTimeEnd;
-                    dbPersonelEntities.SaveChanges();
                     return RedirectToAction("BanPage/" + selectUser.MemberID, "BanPage");
                 }
 
